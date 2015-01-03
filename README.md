@@ -23,4 +23,4 @@ Download and import the [HTTPPostTask.class](https://github.com/texx00/SimpleHTT
 
 The repository include a complete example (app and serverside)
   
-**I'm open to any suggestion ;) Tell me if I'm doing something wrong or if something can be added**
+**I'm open to any suggestion or question ;) Tell me if I'm doing something wrong or if something can be added**
