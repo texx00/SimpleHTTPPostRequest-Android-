@@ -1,13 +1,13 @@
-# SimpleHTTPPostRequest #
+# Simple Async HTTP Post Request #
 
-This class is an easy way to perform an async HTTP POST request.  
+[This class](https://github.com/texx00/SimpleHTTPPostRequest/blob/master/app/src/main/java/com/texx/simplehttppostrequest/HTTPPostTask.java "This class") is an easy way to perform an async HTTP POST request.  
 This want to be a class for begginners and may be too simple for your needs.
   
 With only few lines is possible to perform a basic request with as many parameters as you want.  
 
 ## How to use ##
 
-Import the class in your package then:
+Download and import the [HTTPPostTask.class](https://github.com/texx00/SimpleHTTPPostRequest/blob/master/app/src/main/java/com/texx/simplehttppostrequest/HTTPPostTask.java "This class") in your package then:
 
     HTTPPostTask.HTTPPostTaskListener listener=new HTTPPostTask.HTTPPostTaskListener(){
 		@Override
@@ -23,4 +23,4 @@ Import the class in your package then:
 
 The repository include a complete example (app and serverside)
   
-**I'm open to any suggestion ;) Tell me if I'm doing something wrong if something can be added**
+**I'm open to any suggestion ;) Tell me if I'm doing something wrong or if something can be added**
