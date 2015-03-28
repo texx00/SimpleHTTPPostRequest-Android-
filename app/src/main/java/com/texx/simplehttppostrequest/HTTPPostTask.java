@@ -77,7 +77,7 @@ public class HTTPPostTask extends AsyncTask {
             l.onDataReceived(context, stringBuilder.toString());
         }catch(Exception e){
             e.printStackTrace();
-            l.onDataReceived(context, null);
+            l.onError(context);
         }
         return stringBuilder.toString();
     }
@@ -93,5 +93,10 @@ public class HTTPPostTask extends AsyncTask {
          * @param result: string with the text downloaded from requested page (null if something has gone wrong)
          */
         public void onDataReceived(Context context, String result);
+
+        /**
+         * what to do if there is an error
+         */
+        public void onError(Context c);
     }
 }

@@ -58,6 +58,11 @@ public class MainActivity extends Activity {
                     e.printStackTrace();
                 }
             }
+
+            @Override
+            public void onError(Context context){
+                Log.d("MainActivity","An error has occurred");
+            }
         });
 
         /* adding post parameter:
