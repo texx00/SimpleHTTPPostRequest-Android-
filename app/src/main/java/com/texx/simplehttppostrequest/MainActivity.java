@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 
 public class MainActivity extends Activity {
 
@@ -22,7 +23,7 @@ public class MainActivity extends Activity {
         Toast.makeText(this,"Sending data", Toast.LENGTH_SHORT).show();
 
         //getting data from view
-        EditText et=(EditText)findViewById(R.id.edit);
+        final EditText et=(EditText)findViewById(R.id.edit);
         /* creating request
         *   passing context, url and listener
         */
@@ -33,10 +34,28 @@ public class MainActivity extends Activity {
             public void onDataReceived(Context context, String result) {
                 //decoding json string
                 try {
-                    JSONArray jsona=new JSONArray(result);
-                    Log.d("MainActivity", "The result of "+jsona.getString(0)+" is "+jsona.getString(1));
-                }catch (Exception jsone){
+                    final JSONArray jsona=new JSONArray(result);
+
+                    //to modify a view it's necessary to use a runnable in this way
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                /*
+                                    here you can work on views
+                                 */
+                                et.setText("" + jsona.getString(1));
+
+                            }catch (JSONException e){
+                                e.printStackTrace();
+                            }
+                        }
+                    });
+                    Log.d("MainActivity", "The result of " + jsona.getString(0) + " is " + jsona.getString(1));
+                }catch (JSONException jsone){
                     Log.e("MainActivity", "Something went wrong!");
+                }catch(Exception e){
+                    e.printStackTrace();
                 }
             }
         });

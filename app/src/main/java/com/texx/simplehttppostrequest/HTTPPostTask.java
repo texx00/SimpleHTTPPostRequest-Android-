@@ -79,7 +79,7 @@ public class HTTPPostTask extends AsyncTask {
             e.printStackTrace();
             l.onDataReceived(context, null);
         }
-        return null;
+        return stringBuilder.toString();
     }
 
     /**
