@@ -31,27 +31,13 @@ public class MainActivity extends Activity {
 
             //What to do when the result is available
             @Override
-            public void onDataReceived(Context context, String result) {
+            public void onDataReceived(String result) {
                 //decoding json string
                 try {
                     final JSONArray jsona=new JSONArray(result);
-
-                    //to modify a view it's necessary to use a runnable in this way
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                /*
-                                    here you can work on views
-                                 */
-                                et.setText("" + jsona.getString(1));
-
-                            }catch (JSONException e){
-                                e.printStackTrace();
-                            }
-                        }
-                    });
+                    et.setText("" + jsona.getString(1));
                     Log.d("MainActivity", "The result of " + jsona.getString(0) + " is " + jsona.getString(1));
+                    Toast.makeText(getApplicationContext(), "Result of "+jsona.getString(0),Toast.LENGTH_SHORT).show();
                 }catch (JSONException jsone){
                     Log.e("MainActivity", "Something went wrong!");
                 }catch(Exception e){
@@ -61,7 +47,7 @@ public class MainActivity extends Activity {
 
             @Override
             public void onError(Context context){
-                Log.d("MainActivity","An error has occurred");
+                Log.d("MainActivity", "An error has occurred");
             }
         });
 

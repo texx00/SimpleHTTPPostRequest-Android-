@@ -26,7 +26,7 @@ import java.util.List;
  * Remember to add INTERNET and ACCESS_NETWORK_STATE permissions to manifest
  */
 
-public class HTTPPostTask extends AsyncTask {
+public class HTTPPostTask extends AsyncTask <String, Integer, String> {
 
     private String url;
     private Context context;
@@ -60,7 +60,7 @@ public class HTTPPostTask extends AsyncTask {
     }
 
     @Override
-    protected Object doInBackground(Object[] params){
+    protected String doInBackground(String[] params){
         DefaultHttpClient client = new DefaultHttpClient();
         HttpPost httpPost=new HttpPost(url);
         StringBuilder stringBuilder=new StringBuilder();
@@ -74,14 +74,18 @@ public class HTTPPostTask extends AsyncTask {
             while((buffStrChunk=buffer.readLine())!=null){
                 stringBuilder.append(buffStrChunk);
             }
-            if(l!=null)
-                l.onDataReceived(context, stringBuilder.toString());
         }catch(Exception e){
             e.printStackTrace();
             if(l!=null)
                 l.onError(context);
         }
         return stringBuilder.toString();
+    }
+
+    @Override
+    protected void onPostExecute(String result){
+        if (l!=null)
+            l.onDataReceived(result);
     }
 
     /**
@@ -91,10 +95,9 @@ public class HTTPPostTask extends AsyncTask {
         /**
          * what to do when the result is available
          *
-         * @param context: might be useful
          * @param result: string with the text downloaded from requested page (null if something has gone wrong)
          */
-        public void onDataReceived(Context context, String result);
+        public void onDataReceived(String result);
 
         /**
          * what to do if there is an error
