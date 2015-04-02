@@ -11,9 +11,15 @@ With only few lines is possible to perform a basic request with as many paramete
 Download and import the [HTTPPostTask.class](https://github.com/texx00/SimpleHTTPPostRequest/blob/master/app/src/main/java/com/texx/simplehttppostrequest/HTTPPostTask.java "This class") in your package then:
 
     HTTPPostTask.HTTPPostTaskListener listener=new HTTPPostTask.HTTPPostTaskListener(){
+	
 		@Override
         public void onDataReceived( String result ) {
         	...  
+        }
+        
+        @Override
+        public void onError(Context c){
+        	/*	what to do if an error occurs	*/
         }
 	}
     HTTPPostTask task=new HttpPostTask(context, url, listener);
