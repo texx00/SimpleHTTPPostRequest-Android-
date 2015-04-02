@@ -12,7 +12,7 @@ Download and import the [HTTPPostTask.class](https://github.com/texx00/SimpleHTT
 
     HTTPPostTask.HTTPPostTaskListener listener=new HTTPPostTask.HTTPPostTaskListener(){
 		@Override
-        public void onDataReceived(Context context, String result) {
+        public void onDataReceived( String result ) {
         	...  
         }
 	}
