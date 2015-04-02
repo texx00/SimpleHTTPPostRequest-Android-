@@ -74,10 +74,12 @@ public class HTTPPostTask extends AsyncTask {
             while((buffStrChunk=buffer.readLine())!=null){
                 stringBuilder.append(buffStrChunk);
             }
-            l.onDataReceived(context, stringBuilder.toString());
+            if(l!=null)
+                l.onDataReceived(context, stringBuilder.toString());
         }catch(Exception e){
             e.printStackTrace();
-            l.onError(context);
+            if(l!=null)
+                l.onError(context);
         }
         return stringBuilder.toString();
     }
